@@ -19,7 +19,7 @@ function randomDate(start, end) {
 function generateCampaigns(subsidiaryId, numCampaigns, startMonth, endMonth) {
     const campaigns = [];
     for (let i = 0; i < numCampaigns; i++) {
-        const startDate = randomDate(new Date(2023, startMonth, 1), new Date(2023, endMonth, 0));
+        const startDate = randomDate(new Date(2024, startMonth, 1), new Date(2024, endMonth, 0));
         const durationDays = Math.floor(Math.random() * 10) + 3; // Shorter campaign durations
         const endDate = new Date(new Date(startDate).setDate(new Date(startDate).getDate() + durationDays));
         const budget = parseFloat((Math.random() * 2000 + 500).toFixed(2)); // Lower budget range
