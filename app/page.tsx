@@ -1,8 +1,7 @@
-import { CampaignTable } from "@/components/campaign-table";
-import Image from "next/image";
+import { Dashboard } from "@/components/dashboard";
 
 export default function Home() {
   return (
-    <CampaignTable />
+    <Dashboard />
   );
 }
