@@ -2,8 +2,9 @@ import { getTotals } from "@/services/campaign";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { BarChartIcon, CurrencyIcon, ShoppingCartIcon } from "lucide-react";
 
+export const dynamic = "force-dynamic";
 export const Totals = async ({ subsidiaryId }: any) => {
-  const totals = await getTotals({ subsidiaryId});
+  const totals = await getTotals({ subsidiaryId });
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       <Card>
@@ -28,7 +29,8 @@ export const Totals = async ({ subsidiaryId }: any) => {
         <CardContent>
           <div className="text-4xl font-bold">
             {new Intl.NumberFormat("en-US", {
-              maximumFractionDigits: 1,
+              maximumFractionDigits: 2,
+              minimumFractionDigits: 2,
             }).format(totals.conversion_rate)}
             %
           </div>

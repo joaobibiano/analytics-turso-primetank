@@ -2,6 +2,7 @@
 import { ResponsiveLine } from "@nivo/line";
 import { getChartData } from "@/services/campaign";
 
+export const dynamic = "force-dynamic";
 export function LineChart({
   data,
   ...rest
