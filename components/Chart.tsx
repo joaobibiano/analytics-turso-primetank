@@ -1,4 +1,5 @@
 "use client";
+
 import { ResponsiveLine } from "@nivo/line";
 import { getChartData } from "@/services/campaign";
 
