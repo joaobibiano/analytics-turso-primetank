@@ -1,32 +1,20 @@
-'use client';
+"use client";
 import { ResponsiveLine } from "@nivo/line";
+import { getChartData } from "@/services/campaign";
 
-export function LineChart(props: any) {
+export function LineChart({
+  data,
+  ...rest
+}: {
+  data: Awaited<ReturnType<typeof getChartData>>;
+}) {
   return (
-    <div {...props}>
+    <div {...rest}>
       <ResponsiveLine
         data={[
           {
-            id: "Desktop",
-            data: [
-              { x: "Jan", y: 43 },
-              { x: "Feb", y: 137 },
-              { x: "Mar", y: 61 },
-              { x: "Apr", y: 145 },
-              { x: "May", y: 26 },
-              { x: "Jun", y: 154 },
-            ],
-          },
-          {
-            id: "Mobile",
-            data: [
-              { x: "Jan", y: 60 },
-              { x: "Feb", y: 48 },
-              { x: "Mar", y: 177 },
-              { x: "Apr", y: 78 },
-              { x: "May", y: 96 },
-              { x: "Jun", y: 204 },
-            ],
+            id: "Conversion Rate",
+            data,
           },
         ]}
         margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
@@ -71,5 +59,5 @@ export function LineChart(props: any) {
         role="application"
       />
     </div>
-  )
+  );
 }

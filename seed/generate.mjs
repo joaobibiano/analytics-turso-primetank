@@ -35,13 +35,15 @@ function generateCampaigns(subsidiaryId, numCampaigns, startMonth, endMonth) {
     return campaigns;
 }
 
-const totalCampaigns = 1000;
+const totalCampaigns = 100_000;
 const subsidiaries = [1, 2, 3, 4, 5];
 const monthlyDistribution = [0.05, 0.10, 0.08, 0.07, 0.10, 0.05, 0.15, 0.08, 0.12, 0.10, 0.05, 0.05];
 
 let allCampaigns = [];
 
+console.log("Generating campaigns...");
 monthlyDistribution.forEach((distribution, index) => {
+    console.log(`Month ${index + 1}`);
     subsidiaries.forEach(subsidiaryId => {
         const numCampaigns = Math.floor(totalCampaigns * distribution / subsidiaries.length);
         const campaigns = generateCampaigns(subsidiaryId, numCampaigns, index, index + 1);
@@ -50,9 +52,11 @@ monthlyDistribution.forEach((distribution, index) => {
 });
 
 const batchSize = 1000;
+console.log("Inserting campaigns...");
 function executeBatchInsert(campaigns) {
     const batchGroups = [];
     for (let i = 0; i < campaigns.length; i += batchSize) {
+        console.log(`Inserting batch ${i / batchSize + 1}...`);
         const batch = campaigns.slice(i, i + batchSize);
         const sqlInsert = "INSERT INTO campaigns (subsidiary_id, campaign_name, start_date, end_date, budget, impressions, clicks, conversions, conversion_rate, revenue, roi) VALUES\n" + batch.join(",\n") + ";";
         batchGroups.push(sqlInsert);
